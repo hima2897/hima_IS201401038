@@ -1,0 +1,26 @@
+1.	Why is control needed for the product ……………….
+  •	Control is needed by managers, so that they don’t begin a task before the initial specification is clear.
+  •	 Programmers must be controlled, so that they don’t invent beyond the requirements which are assigned to them. 
+  •	Control must be exercised over the testing of the system, so that tests for all levels of the system, including the smallest components, have adequate
+        test specifications prior to their production. 
+2.	Which of the factors do not  contribute towards the success or failures of massive software projects?
+  a)	Control
+  b)	People
+  c)	Marketing
+  d)	Management
+  e)	Flexibility
+Ans: C
+3.	Which is first general purpose sharing system?
+  a)MULTICS
+  b)CTSS
+  c) FORTRAN
+  d)SABRE PL
+Ans : B
+4.	If a system is to evolve to meet changing requirements, The characteristics it should have are……
+  •	a usefully extendable system must be open-ended.
+  •	It must allow each module to be isolated in an envelope(perfect documentation for each and every module).
+  •	It must encourage economical reuse of existing constructs.
+5.	What are the two extreme methods of including data structure in the system design are…….
+  •	Attach a full description of the data structure to the data base.
+  •	Represent the structure of the data entirely in the program logic.
+  	
