@@ -2,51 +2,46 @@ import socket
 from struct import *
 import datetime
 import pcapy
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
+
 import sys
-import Tkinter as tk
-timeout=30
+
+#timeout=30
  
+#def main(argv):
+class myListWidget(QListWidget):
+	def Clicked(self,item):
+      	     QMessageBox.information(self, "ListWidget", "You clicked: "+item.text())
+             dev = item.text()
+             print dev
+             choose(dev)
 def main(argv):
-    #list all devices
+
+     
+	# def main1():
+    app = QApplication(sys.argv)
+    listWidget =myListWidget()
     devices = pcapy.findalldevs()
-    print devices
-     
-    #ask user to enter device name to sniff
-    print "Available devices are :"
-    for d in devices :
-        print d
-     
-    dev = raw_input("Enter device name to sniff : ")
-     
-    print "Sniffing device " + dev
-     
+   #print devices
+  # listWidget=devices
+    k=len(devices)
+   #Resize width and height
+    listWidget.resize(500,500)
+    for i in range(1,k):
+        listWidget.addItem(devices[i]);
+    listWidget.setWindowTitle('Available devices are:')
+    listWidget.itemClicked.connect(listWidget.Clicked)
+
+    listWidget.show()
+    sys.exit(app.exec_())
  
-  
+def choose(dev):
+    dev = str(dev)      
     pc = pcapy.open_live(dev , 65536 , 1 , 0)
     packet_limit = -1 # infinite
     pc.loop(-1, parse_packet) # capture packets
 
- '''
-    #start sniffing packets
-       #(header, packet) = cap.next()
-    #while(1):
-#	(header, packet) = cap.next()
- #   try:
-	#(header, packet) = cap.next()
-  #      print cap.next()
-#    except Exception as e:
- #       print dir(e), e.message, e.args[0]
- #       traceback.print_exc(file=sys.stdout)
-       # break
-        #print ('%s: captured %d bytes, truncated to %d bytes' %(datetime.datetime.now(), header.getlen(), header.getcaplen()))
-
-
-
-#        parse_packet(packet)
-
-#	packet_limit = -1 # infinite
-#	pc.loop(packet_limit, parse_packet) # capture packets
- '''
 #Convert a string of 6 characters of ethernet address into a dash separated hex string
 def eth_addr (a) :
     b = "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x" % (ord(a[0]) , ord(a[1]) , ord(a[2]), ord(a[3]), ord(a[4]) , ord(a[5]))
@@ -165,3 +160,4 @@ def parse_packet(hdr,packet) :
  
 if __name__ == "__main__":
   main(sys.argv)
+  main1()
