@@ -1,13 +1,9 @@
-'''
-Packet sniffer in python using the pcapy python library
- 
-''' 
 import socket
 from struct import *
 import datetime
 import pcapy
 import sys
-timeout=30
+#timeout=30
  
 def main(argv):
     #list all devices
@@ -23,14 +19,12 @@ def main(argv):
      
     print "Sniffing device " + dev
      
-    '''
-    open device
+   #   open device
     # Arguments here are:
     #   device
     #   snaplen (maximum number of bytes to capture _per_packet_)
     #   promiscious mode (1 for true)
     #   timeout (in milliseconds)
-    '''
     pc = pcapy.open_live(dev , 65536,1, 0)
     packet_limit = -1 # infinite
     pc.loop(-1, parse_packet) # capture packets
